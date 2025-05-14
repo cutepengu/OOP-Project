@@ -34,7 +34,7 @@
 - Focus on creating clear interface, making it easy to navigate and accept user control and feedback to improve UI usability
 
 ## Use Case 
-(add diagram)
+<img src="use_case_diagram.png">
 
 ## Design
 (add storyboard and data flow diagram as images)
