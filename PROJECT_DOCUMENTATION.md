@@ -34,10 +34,15 @@
 - Focus on creating clear interface, making it easy to navigate and accept user control and feedback to improve UI usability
 
 ## Use Case 
-(add diagram)
+<img src="use_case_diagram.png">
 
 ## Design
-(add storyboard and data flow diagram as images)
+
+### Storyboard
+<img src="storyboard.png">
+
+### Data Flow Diagram
+(image)
 
 ## Build and Test
 (add a code block or first build)
