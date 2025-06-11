@@ -1,19 +1,135 @@
+import random
 def show_intro():
     print("===================================")
     print("     WELCOME TO PUZZLE PALS!")
     print("===================================")
     print("Choose an option below.\n")
 
+def add_currency(user_balance, amount):
+    return user_balance + amount
+
+def subtract_currency(user_balance, amount):
+    if user_balance >= amount:
+        return user_balance - amount
+    
+def generate_math_question():
+        ("""Generates a random math question, gets user input, and provides feedback.""")
+
+# displays the introduction when program is first opened
+print("    WELCOME TO PUZZLE PALS") 
+print("    Choose an option below.") 
+
+# displays the options user can choose from
 choices = int(input("""
                     1. Play Game
                     2. View Leaderboards
                     3. Help 
                     4. Exit Game 
-                    """))
+                    """)) 
 
 print(choices)
 if choices == 1:
-    input("What is your year level?: ")
+    # requests for year level to suit player's skills and requirements
+    year_level = input("What is your year level?: ") 
+    if year_level == 1:
+        import random
+        # generates random numbers and operator
+        num1 = random.randint(1, 10)
+        num2 = random.randint(1, 10)
+        operator = random.choice(["+"])
+
+        # creates the question
+        question = f"What is {num1} {operator} {num2}?"
+
+            # calculates the correct answer
+        if operator == "+":
+              correct_answer = num1 + num2
+        else:
+          print("Error: Invalid operator")
+
+
+            # gets user input
+        user_answer = input(question + " ")
+        try:
+                # converted to float for accuracy
+                user_answer = float(user_answer)
+                if user_answer == correct_answer:
+                    print("Correct!")
+                else:
+                     print(f"Incorrect. The answer is {correct_answer}.")
+        except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        # runs the function to generate a question
+        generate_math_question()
+       
+    
+    elif year_level == 2:
+        num1 = random.randint(1, 10)
+        num2 = random.randint(1, 10)
+        operator = random.choice(["+", "-"])
+        
+        # creates the question
+        question = f"What is {num1} {operator} {num2}?"
+
+        # calculates the correct answer
+        if operator == "+":
+          correct_answer = num1 + num2
+        elif operator == "-":
+          correct_answer = num1 - num2  
+        else:
+          print("Error: Invalid operator")
+
+
+        # gets user input
+        user_answer = input(question + " ")
+        try:
+        # converted to float for accuracy
+            user_answer = float(user_answer)
+            if user_answer == correct_answer:
+                print("Correct!")
+            else:
+                print(f"Incorrect. The answer is {correct_answer}.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+            # runs the function to generate a question
+            generate_math_question()
+
+    elif year_level == 3:
+        num1 = random.randint(1, 10)
+        num2 = random.randint(1, 10)
+        operator = random.choice(["+", "-", "*"])
+        
+        # creates the question
+        question = f"What is {num1} {operator} {num2}?"
+
+        # calculates the correct answer
+        if operator == "+":
+          correct_answer = num1 + num2
+        elif operator == "-":
+          correct_answer = num1 - num2  
+        elif operator == "*":
+          correct_answer = num1 * num2
+        else:
+          print("Error: Invalid operator")
+
+
+        # gets user input
+        user_answer = input(question + " ")
+        try:
+        # converted to float for accuracy
+            user_answer = float(user_answer)
+            if user_answer == correct_answer:
+                print("Correct!")
+            else:
+                print(f"Incorrect. The answer is {correct_answer}.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+            # runs the function to generate a question
+            generate_math_question()
+
 
 elif choices == 2:
     print()
