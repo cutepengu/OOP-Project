@@ -1,183 +1,227 @@
 import random
-def show_intro():
-    print("===================================")
-    print("     WELCOME TO PUZZLE PALS!")
-    print("===================================")
-    print("Choose an option below.\n")
+import uuid
 
-def add_currency(user_balance, amount):
-    return user_balance + amount
+# player class stores all the player information
+class Player:
 
-def subtract_currency(user_balance, amount):
-    if user_balance >= amount:
-        return user_balance - amount
-    
-def generate_math_question():
-        ("""Generates a random math question, gets user input, and provides feedback.""")
+    # sets up player's information: name, year level, starting coins
+    def __init__(self, name, year_level):
+        self.name = name
+        self.year_level = year_level
+        self.coins = 0
+        self.player_id = str(random.randint(10000000, 99999999)) # provides each player an ID consisting of 8 numerical digits
 
-# displays the introduction when program is first opened
-print("    WELCOME TO PUZZLE PALS") 
-print("    Choose an option below.") 
+    # adds coin to player's balance
+    def add_coins(self, amount):
+        self.coins += amount
 
-# displays the options user can choose from
-choices = int(input("""
-                    1. Play Game
-                    2. View Leaderboards
-                    3. Help 
-                    4. Exit Game 
-                    """)) 
+    # subtracts coin from player's balance but cannot go below 0
+    def subtract_coins(self, amount):
+        self.coins = max(0, self.coins - amount)
 
-print(choices)
-if choices == 1:
-    # requests for year level to suit player's skills and requirements
-    year_level = input("What is your year level?: ") 
-    if year_level == 1:
-        import random
-        # generates random numbers and operator
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["+"])
+# game class controls everything happening within the game
+class Game:
+      
+    # sets up game with no player and empty leaderboard
+    def __init__(self):
+        self.player = None
+        self.leaderboard = []  
+        self.player_ID = set()
 
-        # creates the question
-        question = f"What is {num1} {operator} {num2}?"
+    # generates an 8 digit player id
+    def generate_player_id(self):
+        while True:
+            new_id = str(random.randint(10000000, 99999999))  # 8-digit number
+            if new_id not in self.used_ids:
+                self.used_ids.add(new_id)
+                return new_id 
+            print(new_id)
 
-            # calculates the correct answer
-        if operator == "+":
-              correct_answer = num1 + num2
-        else:
-          print("Error: Invalid operator")
+    # displays game title when it starts
+    def show_intro(self):
+        print("===================================")
+        print("       WELCOME TO PUZZLE PALS!")
+        print("===================================")
 
+    # allows users to choose what to do: play game, view leaderboard, receive help, exit game
+    def main_menu(self):
+        while True:
+            try:
+                choice = int(input("""
 
-            # gets user input
-        user_answer = input(question + " ")
-        try:
-                # converted to float for accuracy
-                user_answer = float(user_answer)
-                if user_answer == correct_answer:
-                    print("Correct!")
+1. Play Game
+2. View Leaderboards
+3. Display Player ID
+4. Help
+5. Exit Game
+
+Choose an option: """))
+
+            except ValueError:
+                print("Please enter a valid number.")
+                continue
+
+            # runs different parts of the game depending on user's choice
+            if choice == 1:
+                self.start_game() # runs game
+            elif choice == 2:
+                self.view_leaderboard() # displays leaderboard with name and amount of coins
+            elif choice == 3:
+                if self.player:
+                  print(f"Your Player ID is: {self.player.player_id}") # displays player's player ID
+            elif choice == 4:
+                self.show_help() # displays options for help: report issue, report player, sound controls
+            elif choice == 5:
+                print("\nThanks for playing Puzzle Pals! See you next time!") # exits game
+                break
+            else:
+                print("Please choose a number from 1 to 4.") # requests for a valid input
+
+    # starts the game: gets player's name and year level
+    def start_game(self):
+        name = input("Enter your name: ")
+
+        # repeats until a valid year level is entered
+        while True:
+            try:
+                year = int(input("Enter your year level (1-12): "))
+                if 1 <= year <= 12:
+                    break
                 else:
-                     print(f"Incorrect. The answer is {correct_answer}.")
-        except ValueError:
-                print("Invalid input. Please enter a number.")
+                    print("Year level must be between 1 and 12.")
+            except ValueError:
+                print("Please enter a number between 1 and 12.")
 
-        # runs the function to generate a question
-        generate_math_question()
-       
-    
-    elif year_level == 2:
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["+", "-"])
+        # creates a new player object
+        self.player = Player(name, year)
         
-        # creates the question
-        question = f"What is {num1} {operator} {num2}?"
+        # moves on to the gameplay
+        self.run_stage()
+
+    # runs the stage of the game
+    def run_stage(self):
+        print(f"\nWelcome {self.player.name}!")
+        print(f"Your Player ID is: {self.player.player_id}")
+        num_puzzles = 10
+
+        # loops through each of the puzzles
+        for i in range(1, num_puzzles + 1):
+            print(f"\nPuzzle {i} of {num_puzzles}")
+            self.ask_scaled_question()   
+
+        print(f"\nGreat job, {self.player.name}! You finished all the puzzles.")
+        print(f"You ended with {self.player.coins} coins.")
+
+        self.leaderboard.append((self.player.name, self.player.coins))
+
+        play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+        if play_again == "yes":
+            self.start_game()  # restart the game
+        else:
+            print("Returning to main menu...")
+
+    # sets questions based on player's year level    
+    def ask_scaled_question(self):
+        year = self.player.year_level
+
+        if year <= 4: 
+            num1 = random.randint(1, 10)
+            num2 = random.randint(1, 10)
+            operator = random.choice(['+', '-'])
+
+        elif year <= 8:
+            num1 = random.randint(1, 20)
+            num2 = random.randint(1, 20)
+            operator = random.choice(['+', '-', '*'])
+
+        else:
+            num1 = random.randint(1, 50)
+            num2 = random.randint(1, 50)
+            operator = random.choice(['+', '-', '*', '/'])
+
+            if operator == '/':
+                while num2 == 0 or num1 % num2 != 0:
+                    num1 = random.randint(1, 50)
+                    num2 = random.randint(1, 50)
 
         # calculates the correct answer
-        if operator == "+":
-          correct_answer = num1 + num2
-        elif operator == "-":
-          correct_answer = num1 - num2  
-        else:
-          print("Error: Invalid operator")
+        if operator == '+':
+            correct = num1 + num2
+        elif operator == '-':
+            correct = num1 - num2
+        elif operator == '*':
+            correct = num1 * num2
+        elif operator == '/':
+            correct = num1 // num2  # only whole number division in game
 
-
-        # gets user input
-        user_answer = input(question + " ")
         try:
-        # converted to float for accuracy
-            user_answer = float(user_answer)
-            if user_answer == correct_answer:
-                print("Correct!")
+            # asks the question
+            answer = int(input(f"What is {num1} {operator} {num2}? "))
+            if answer == correct:
+                print("Correct! You earn 10 coins.")
+                self.player.add_coins(10)
             else:
-                print(f"Incorrect. The answer is {correct_answer}.")
+                print(f"Incorrect. The correct answer was {correct}. You lose 5 coins.")
+                self.player.subtract_coins(5)
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. You lose 5 coins.")
+            self.player.subtract_coins(5)
 
-            # runs the function to generate a question
-            generate_math_question()
+        # displays the updated amount of coins player has now
+        print(f"Your current coin total is: {self.player.coins}")
 
-    elif year_level == 3:
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["+", "-", "*"])
-        
-        # creates the question
-        question = f"What is {num1} {operator} {num2}?"
+    # displays the list of top scores
+    def view_leaderboard(self):
+        print("\n=== Leaderboard ===")
 
-        # calculates the correct answer
-        if operator == "+":
-          correct_answer = num1 + num2
-        elif operator == "-":
-          correct_answer = num1 - num2  
-        elif operator == "*":
-          correct_answer = num1 * num2
+        if not self.leaderboard:
+            print("No scores yet!")
         else:
-          print("Error: Invalid operator")
+            # sorts the leaderboard from highest to lowest coins
+            sorted_board = sorted(self.leaderboard, key=lambda x: x[1], reverse=True)
+            for i, (name, coins) in enumerate(sorted_board, start=1):
+                print(f"{i}. {name} - {coins} coins")
 
+    # explains how the game works
+    def show_help(self):
+        choice = int(input("""
 
-        # gets user input
-        user_answer = input(question + " ")
-        try:
-        # converted to float for accuracy
-            user_answer = float(user_answer)
-            if user_answer == correct_answer:
-                print("Correct!")
+1. Report Player
+2. Report Issue
+3. Sound Controls
+
+Choose an option: """)) 
+
+        # allows player to report player
+        if choice == 1: 
+            print("Please provide us with the player ID of the person you would like to report and the reasoning for the report. Thank you.")
+            report_player_id = input("Player ID: ")
+            report_reason = input("Reason of report: ")
+            print("Thank you for your report. We will view it as quickly as possible.")
+        # allows player to report game issue / system
+        elif choice == 2:
+            print("Please provide us with any issues regarding our game or our system. Thank you.")
+            report_issue = input("Issues: ")
+            print("Thank you for your report. We will view it as quickly as possible.")
+        # allows player to toggle sound feature on and off  
+        elif choice == 3: 
+            sound_choice = int(input("""
+
+1. Sound ON
+2. Sound OFF
+
+Choose an option: """)) 
+            if sound_choice == 1:
+                print("Sound turned on.")
+            elif sound_choice == 2:
+                print("Sound turned off")
             else:
-                print(f"Incorrect. The answer is {correct_answer}.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+                print("Please choose between 1 and 2.")
 
-            # runs the function to generate a question
-            generate_math_question()
+# Starts the whole game when the file runs
+if __name__ == "__main__":
+    game = Game()           # creates a new game object
+    game.show_intro()       # displays welcome message
+    game.main_menu()        # displays the main menu
 
 
-elif choices == 2:
-    print()
-
-elif choices == 3:
-    print("Please choose the number of the option you require.")
-    report = int(input("""
-                       1. Report Player
-                       2. Report Issue
-                       3. Sound Control
-                       """))
-    if report == 1:
-        print("Please tell us the player information of the player you would like to report and state the reason for your report: ")
-        input("Player ID: ")
-        input("Reason for Report: ")
-        print("Thank you. We will work to our best to solve your issue.")
-
-    elif report == 2:
-        print("Please tell us the issue you would like for it to be solved. This can include anything we can improve on as well: ")
-        input("Reason for Reporting an Issue: ")
-        print("Thank you. We will work to our best to solve your issue.")
-
-    elif report == 3:
-        print("working on")
-    else:
-        print("Please choose a number from the options provided")
-    
-elif choices == 4:
-    print("\nThanks for playing. Goodbye!\n")
-else:
-    print("Enter a number provided above.")
-
-def show_Play_Game():
-    print("\nPlay Game")
-    print(" - Year Level: please enter your year level")
-    print(" - Exit Game: exit the game\n")
-
-def show_Leaderboards():
-    print("\nLeaderboards:")
-    print(" - Trophies")
-    print(" - Wins")
-    print(" - \n")
-
-def show_help():
-    print("\nHelp:")
-    print(" - Sound Control: customise sound haptics")
-    print(" - Report Player: Please tell us the player information of the player you would like to report and please state the reason for your report. Thank you.")
-    print(" - Report Issue: Please tell us the issue you would like for it to be solved. This can include anything we can improve on as well. Thank you.")
-
-def movement():
-    print("\nPlayer moves north, east, south or west...\n")
