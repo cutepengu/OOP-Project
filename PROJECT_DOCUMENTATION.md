@@ -89,6 +89,13 @@ In the current stage of development, I structured my game to deliver an interact
 # Sprint 2
 ## Design
 
+### Structure Chart
+<img src="structure_chart.png">
+
+### Algorithms
+#### Flowcharts
+
+#### Pseudocodes
 
 ## Build and Test
 <img src="sprint_2_code.png">
@@ -101,6 +108,7 @@ In the current stage of development, I structured my game to deliver an interact
 ## Design
 
 ## Build and Test
+<img src="sprint_3_code.png">
 
 ## Review
 
