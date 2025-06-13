@@ -1,5 +1,4 @@
 import random
-import uuid
 
 # player class stores all the player information
 class Player:
