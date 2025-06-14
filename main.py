@@ -1,11 +1,12 @@
 import random
 
+
 # player class stores all the player information
 class Player:
 
     # sets up player's information: name, year level, starting coins
-    def __init__(self, name, year_level):
-        self.name = name
+    def __init__(self, player_name, year_level):
+        self.player_name = player_name
         self.year_level = year_level
         self.coins = 0
         self.player_id = str(random.randint(10000000, 99999999)) # provides each player an ID consisting of 8 numerical digits
@@ -23,7 +24,7 @@ class Game:
       
     # sets up game with no player and empty leaderboard
     def __init__(self):
-        self.player = None
+        self.player_name = None
         self.leaderboard = []  
         self.player_ID = set()
 
@@ -183,7 +184,7 @@ Choose an option: """))
 
     # explains how the game works
     def show_help(self):
-        choice = int(input("""
+        help_choice = int(input("""
 
 1. Report Player
 2. Report Issue
@@ -192,18 +193,18 @@ Choose an option: """))
 Choose an option: """)) 
 
         # allows player to report player
-        if choice == 1: 
+        if help_choice == 1: 
             print("Please provide us with the player ID of the person you would like to report and the reasoning for the report. Thank you.")
             report_player_id = input("Player ID: ")
             report_reason = input("Reason of report: ")
             print("Thank you for your report. We will view it as quickly as possible.")
         # allows player to report game issue / system
-        elif choice == 2:
+        elif help_choice == 2:
             print("Please provide us with any issues regarding our game or our system. Thank you.")
             report_issue = input("Issues: ")
             print("Thank you for your report. We will view it as quickly as possible.")
         # allows player to toggle sound feature on and off  
-        elif choice == 3: 
+        elif help_choice == 3: 
             sound_choice = int(input("""
 
 1. Sound ON
@@ -222,5 +223,3 @@ if __name__ == "__main__":
     game = Game()           # creates a new game object
     game.show_intro()       # displays welcome message
     game.main_menu()        # displays the main menu
-
-
