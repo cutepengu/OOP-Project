@@ -94,8 +94,14 @@ In the current stage of development, I structured my game to deliver an interact
 
 ### Algorithms
 #### Flowcharts
+<img src="flowchart_main.png" alt="Flowchart Mainline Routine">
+
+<img src="flowchart_sub_1_Help.png " alt="Flowchart Subroutine 1">
+
+<img src="flowchart_sub_2_Play_Game.png" alt="Flowchart Subroutine 2">
 
 #### Pseudocodes
+
 
 ## Build and Test
 <img src="sprint_2_code.png">
