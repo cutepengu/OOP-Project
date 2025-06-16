@@ -198,6 +198,15 @@ In the next stage of development, I will put my focus on making the program aest
 
 # Sprint 4
 ## Design
+### Potential Improvements
+#### Identify Potential Enhancements:
+type
+
+#### Explain the Integration Process:
+type
+
+#### Updated Structure Chart
+(Update Structure Chart / Class Diagram as Required)
 
 ## Build and Test
 
