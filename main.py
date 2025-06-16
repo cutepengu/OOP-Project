@@ -9,8 +9,9 @@ class Player:
         self.player_name = player_name
         self.year_level = year_level
         self.coins = 0
-        self.player_id = str(random.randint(10000000, 99999999)) # provides each player an ID consisting of 8 numerical digits
-
+        self.player_ID = str(random.randint(10000000, 99999999)) # provides each player an ID consisting of 8 numerical digits
+        
+        
     # adds coin to player's balance
     def add_coins(self, amount):
         self.coins += amount
@@ -31,11 +32,11 @@ class Game:
     # generates an 8 digit player id
     def generate_player_id(self):
         while True:
-            new_id = str(random.randint(10000000, 99999999))  # 8-digit number
-            if new_id not in self.used_ids:
-                self.used_ids.add(new_id)
-                return new_id 
-            print(new_id)
+            new_ID = str(random.randint(10000000, 99999999))  # 8-digit number
+            if new_ID not in self.used_IDs:
+                self.used_IDs.add(new_ID)
+                return new_ID 
+            print(new_ID)
 
     # displays game title when it starts
     def show_intro(self):
@@ -68,7 +69,7 @@ Choose an option: """))
                 self.view_leaderboard() # displays leaderboard with name and amount of coins
             elif choice == 3:
                 if self.player:
-                  print(f"Your Player ID is: {self.player.player_id}") # displays player's player ID
+                  print(f"Your Player ID is: {self.player.player_ID}") # displays player's player ID
             elif choice == 4:
                 self.show_help() # displays options for help: report issue, report player, sound controls
             elif choice == 5:
@@ -100,8 +101,8 @@ Choose an option: """))
 
     # runs the stage of the game
     def run_stage(self):
-        print(f"\nWelcome {self.player.name}!")
-        print(f"Your Player ID is: {self.player.player_id}")
+        print(f"\nWelcome {self.player.player_name}!")
+        print(f"Your Player ID is: {self.player.player_ID}")
         num_puzzles = 10
 
         # loops through each of the puzzles
@@ -109,10 +110,10 @@ Choose an option: """))
             print(f"\nPuzzle {i} of {num_puzzles}")
             self.ask_scaled_question()   
 
-        print(f"\nGreat job, {self.player.name}! You finished all the puzzles.")
+        print(f"\nGreat job, {self.player.player_name}! You finished all the puzzles.")
         print(f"You ended with {self.player.coins} coins.")
 
-        self.leaderboard.append((self.player.name, self.player.coins))
+        self.leaderboard.append((self.player.player_name, self.player.coins))
 
         play_again = input("Do you want to play again? (yes/no): ").strip().lower()
         if play_again == "yes":
@@ -195,7 +196,7 @@ Choose an option: """))
         # allows player to report player
         if help_choice == 1: 
             print("Please provide us with the player ID of the person you would like to report and the reasoning for the report. Thank you.")
-            report_player_id = input("Player ID: ")
+            report_player_ID = input("Player ID: ")
             report_reason = input("Reason of report: ")
             print("Thank you for your report. We will view it as quickly as possible.")
         # allows player to report game issue / system
