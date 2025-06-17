@@ -219,10 +219,42 @@ For Multiplayer Mode, I would allow two or more users to enter their names and t
 Each of these features would be tested separately before fully integrating into the main menu, ensuring they don’t break existing functionality. I would also keep my code modular by placing each feature in its own function or class to maintain readability and make future updates easier.
 
 #### Updated Structure Chart
-(Update Structure Chart / Class Diagram as Required)
+<img src="images/updated_structure_chart.png">
 
 ## Build and Test
+<img src="images/sprint_4_code.png">
 
 ## Review
+### 1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning.
+### Functional Requirements:
+#### -Users must be able to use their controller to select options and play games
+✅ My code utilises numeric inputs to select game options and play games.
+#### -Program must be educational and help develop practical skills
+✅ My program uses math operations like +, -, ×, ÷ to support a wide range of players with their math skills, according to their yearl level.
+#### -Provide users with correct information if their input is incorrect
+✅ My program handles incorrect errors and invalid inputs and provides users with a solution or an answer.
+#### -Create a clear user interface
+✅ My UI is simple and text based, using clear images, spacing, and heading to allow a easy visualisation.
+#### -Program must update user's data frequently to provide a visualisation of their in-game items
+✅ My program is successful in upadting user's data (coins) as after every round of quiz, they are given their updated sum of coins. The leaderboard now correctly displays the right information. 
 
-## Launch
+### Non-Functional Requirements:
+#### -System must be fast with no delays which can potentially effect users
+✅ My program runs instantly without any delays or lag.
+#### -System must be checked frequently to allow data of the program to be reliable
+✅ Data of the program will be reliable as system will be thoroughly checked and updates are less required.
+#### -Program must be clear to visualise with thorough instructions 
+✅ The help menu explains options clearly and even includes a system for reporting.
+#### -Program must be visually appealing and engaging
+✅ My program uses text UI but there is a special feature added, making the game way more engaging and appealing to users.
+#### -Program must have high maintainability through creating an easy code structure and documentation for developers
+✅ Class based structure with comments throughout the code allowing the code to be readable and easy to follow.
+
+### 2. Analyse the performance of your program against the key use-cases you identified.
+My program covers all the use-cases I have identified at the beginning of the project. I have added a new function where players can interact with each other so this will make the game more engaging in contrast to anything. The report system also became more useful as player IDs are provided at the beginning of the multiplayer game, allowing players to report on other players as their player IDs are given. Everything works well and how I intended it to be. 
+
+### 3. Assess the quality of your code in terms of readability, structure, and maintainability.
+The final code for Puzzle Pals demonstrates strong readability and a solid structure, making it relatively easy to follow and understand. Clear variable names and well-separated functions contribute to the overall clarity of the program. The use of object-oriented principles, such as creating separate Player and Game classes, adds to its maintainability by allowing different components to be managed independently. However, there is room for improvement particularly in reducing repetition (like repeated input validation). Overall, the code is effective but could benefit from minor structural refinements to improve scalability and long-term manageability.
+
+### 4. Explain the improvements that should be made in the next stage of development.
+In the next stage of development, focusing on improving the game’s aesthetics by creating a graphical user interface with clear visuals and interactive buttons would greatly enhance the user experience. Alongside this, adding a way to save leaderboard data between sessions will also help give the game a more polished and complete feel.
