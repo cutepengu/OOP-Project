@@ -200,10 +200,23 @@ In the next stage of development, I will put my focus on making the program aest
 ## Design
 ### Potential Improvements
 #### Identify Potential Enhancements:
-type
+- Adaptive Difficulty- Adjust the question difficulty according to the player's performance
+- Timed Difficulty- Add a time limit to increase difficulty or create a new mode within the game
+- Teacher Mode- Add a separate mode for teachers to be able to set custom questions or monitor their students
+- Multiplayer mode- Allow 2 or more players to get into a game at the same time to see who answers the most amount of questions
 
 #### Explain the Integration Process:
-type
+To integrate these new features into Puzzle Pals, I would start by planning each enhancement as a separate module or subroutine to keep the code organised and easy to manage.
+
+For Adaptive Difficulty, I would create a performance tracker that records the number of correct and incorrect answers. Based on the player’s recent accuracy, the question generator would automatically adjust the range of numbers and the complexity of the operations (e.g., introducing harder operators or multi-step questions if the player is doing well).
+
+For Timed Difficulty, I would use a timer function (like time.time() in Python) to measure how long the player takes to answer each question. I could then add a countdown timer on screen, where players must answer within a certain number of seconds or they lose coins or the question is skipped. This could also be introduced as a separate timed game mode in the main menu.
+
+To build Teacher Mode, I would add a new menu option that allows teachers to log in with a code or ID. Once inside, they could enter custom questions, view stored player performance data, or select which year levels the questions apply to. I would also need a way to store and load this data, using files or simple databases.
+
+For Multiplayer Mode, I would allow two or more users to enter their names and take turns answering questions. I would use a scoreboard to track each player’s performance and display results at the end of the round. To keep the gameplay fair, both players could be given the same or similar questions and equal time to answer.
+
+Each of these features would be tested separately before fully integrating into the main menu, ensuring they don’t break existing functionality. I would also keep my code modular by placing each feature in its own function or class to maintain readability and make future updates easier.
 
 #### Updated Structure Chart
 (Update Structure Chart / Class Diagram as Required)

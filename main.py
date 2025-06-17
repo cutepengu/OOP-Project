@@ -1,6 +1,5 @@
 import random
 
-
 # player class stores all the player information
 class Player:
 
@@ -51,10 +50,11 @@ class Game:
                 choice = int(input("""
 
 1. Play Game
-2. View Leaderboards
-3. Display Player ID
-4. Help
-5. Exit Game
+2. Play Multiplayer Game
+3. View Leaderboards
+4. Display Player ID
+5. Help
+6. Exit Game
 
 Choose an option: """))
 
@@ -66,13 +66,15 @@ Choose an option: """))
             if choice == 1:
                 self.start_game() # runs game
             elif choice == 2:
-                self.view_leaderboard() # displays leaderboard with name and amount of coins
+                self.multiplayer_mode()
             elif choice == 3:
+                self.view_leaderboard() # displays leaderboard with name and amount of coins
+            elif choice == 4:
                 if self.player:
                   print(f"Your Player ID is: {self.player.player_ID}") # displays player's player ID
-            elif choice == 4:
-                self.show_help() # displays options for help: report issue, report player, sound controls
             elif choice == 5:
+                self.player.show_help() # displays options for help: report issue, report player, sound controls
+            elif choice == 6:
                 print("\nThanks for playing Puzzle Pals! See you next time!") # exits game
                 break
             else:
@@ -122,8 +124,9 @@ Choose an option: """))
             print("Returning to main menu...")
 
     # sets questions based on player's year level    
-    def ask_scaled_question(self):
-        year = self.player.year_level
+    def ask_scaled_question(self, player):
+        year = player.year_level
+
 
         if year <= 4: 
             num1 = random.randint(1, 10)
@@ -160,16 +163,79 @@ Choose an option: """))
             answer = int(input(f"What is {num1} {operator} {num2}? "))
             if answer == correct:
                 print("Correct! You earn 10 coins.")
-                self.player.add_coins(10)
+                player.add_coins(10)
             else:
                 print(f"Incorrect. The correct answer was {correct}. You lose 5 coins.")
-                self.player.subtract_coins(5)
+                player.subtract_coins(5)
         except ValueError:
             print("Invalid input. You lose 5 coins.")
-            self.player.subtract_coins(5)
+            player.subtract_coins(5)
 
         # displays the updated amount of coins player has now
-        print(f"Your current coin total is: {self.player.coins}")
+        print(f"Your current coin total is: {player.coins}")
+
+    def multiplayer_mode(self):
+        print("\n--- Multiplayer Mode ---")
+        
+        # get player 1 information
+        name1 = input("Player 1, enter your name: ")
+        while True:
+            try:
+                year1 = int(input("Player 1, enter your year level (1-12): "))
+                if 1 <= year1 <= 12:
+                    break
+                else:
+                    print("Year level must be between 1 and 12.")
+            except ValueError:
+                print("Please enter a number between 1 and 12.")
+        player1 = Player(name1, year1)
+        
+        # gets player 2 information
+        name2 = input("Player 2, enter your name: ")
+        while True:
+            try:
+                year2 = int(input("Player 2, enter your year level (1-12): "))
+                if 1 <= year2 <= 12:
+                    break
+                else:
+                    print("Year level must be between 1 and 12.")
+            except ValueError:
+                print("Please enter a number between 1 and 12.")
+        player2 = Player(name2, year2)
+
+        # starts the game and displays both players' IDs
+        print(f"\nWelcome {player1.player_name} and {player2.player_name}!")
+        print(f"{player1.player_name}'s Player ID: {player1.player_ID}")
+        print(f"{player2.player_name}'s Player ID: {player2.player_ID}")
+
+        total_puzzles = 10
+        puzzles_each = total_puzzles // 2 # fair distribution of questions
+
+        # alternating turns between the two players
+        for i in range(1, puzzles_each + 1):
+            print(f"\nRound {i} - {player1.player_name}'s turn")
+            self.ask_scaled_question(player1)
+
+            print(f"\nRound {i} - {player2.player_name}'s turn")
+            self.ask_scaled_question(player2)
+
+        print("\n--- Game Over ---")
+        print(f"{player1.player_name} scored {player1.coins} coins.")
+        print(f"{player2.player_name} scored {player2.coins} coins.")
+
+        # displays the outcome after the game ends
+        if player1.coins > player2.coins:
+            print(f"Congratulations {player1.player_name}, you win!")
+            self.leaderboard.append((player1.player_name, player1.coins))
+        elif player2.coins > player1.coins:
+            print(f"Congratulations {player2.player_name}, you win!")
+            self.leaderboard.append((player2.player_name, player2.coins))
+        else:
+            print("It's a tie!")
+            self.leaderboard.append((player1.player_name, player1.coins))
+            self.leaderboard.append((player2.player_name, player2.coins))
+
+            input("Press Enter to return to the main menu.")
 
     # displays the list of top scores
     def view_leaderboard(self):
