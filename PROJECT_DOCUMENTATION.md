@@ -48,6 +48,9 @@
 #### Level 1
 <img src="images/data_flow_diagram_level_1.png">
 
+#### Gantt Chart
+<img src="images/gantt_chart.png">
+
 ## Build and Test
 <img src="images/sprint_1_code.png">
 
@@ -258,3 +261,33 @@ The final code for Puzzle Pals demonstrates strong readability and a solid struc
 
 ### 4. Explain the improvements that should be made in the next stage of development.
 In the next stage of development, focusing on improving the game’s aesthetics by creating a graphical user interface with clear visuals and interactive buttons would greatly enhance the user experience. Alongside this, adding a way to save leaderboard data between sessions will also help give the game a more polished and complete feel.
+
+## Evaluation of System
+#### 1. Explain how you could improve your system in future updates. Analyse the impact these updates could have on the user experience.
+To improve my system in the future, I believe that adding more modes and a graphical user interface will be beneficial as it will allow a variety of users to enjoy the game at once and through building on the program's aesthetics, it will make it visually appealing. 
+
+#### 2. Evaluate the system in terms of how well it meets the requirements and specifications.
+My system now meets all the requirements and specifications I have defined at the start of my project. Although I was not successful in running my program with a GUI, it has all the modes required to make it a fully working and enjoyable game. 
+
+#### 3. Evaluate your processes in terms of project management.
+I believe that I was not good at managing my project as I did have to do more work as the hand in date came nearer. Although I finished my program, I believe that I could have made more imporvements on my code. However, I am satisfied with the end results. 
+
+#### 4. Gather feedback from at least two peers on meeting of functional and non-functional specifications. Evaluate your project in relation to peer feedback.
+Peer 1 (Miles):
+
+    - The game content is really interesting, and I can see how it can strongly benifit students of all ages in their studies of math. I See it more useful as avoiding silly mistakes.
+
+    - A nagative I have is the variety of questions is limited, and the difficulty scaling could be improved further. This also ties into how some of the questions it asks are unreasonably difficult, regardless of ability. 
+
+    - Overall its a good program, and a good foundation to be built upon, that could make it an excelent study tool.
+
+Peer 2(Will):
+
+    - The game content is extremely thourough and I can see the usability of the game for educational purposes for all ages.
+
+    - The game could improve in variety of questions and the dificulty scaling could be improved.
+
+I believe that the fundamentals of my project was crafted well however, I was not able to reach into the smaller details and 
+
+#### 5. Justify your use of OOP class features
+type
