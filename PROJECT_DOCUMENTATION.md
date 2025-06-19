@@ -264,13 +264,13 @@ In the next stage of development, focusing on improving the game’s aesthetics 
 
 ## Evaluation of System
 #### 1. Explain how you could improve your system in future updates. Analyse the impact these updates could have on the user experience.
-To improve my system in the future, I believe that adding more modes and a graphical user interface will be beneficial as it will allow a variety of users to enjoy the game at once and through building on the program's aesthetics, it will make it visually appealing. 
+If I were to update my system in the future, I’d look at adding extra game modes, like timed challenges or multiplayer options, and also work on creating a proper graphical user interface (GUI). These features would make the game more exciting and offer users more ways to play. For example, a multiplayer mode that supports more than two players would let groups of friends or classmates join in together, which would make it more fun and social. A GUI would also make the game look better and be easier to use. However, these updates may require more frequent maintenance, testing, and updates to ensure functionality. More modes mean more time spent testing and fixing things to make sure everything works properly. A GUI can also use more memory and slow down or cause lags and delays in the game. Overall, these updates could significantly improve the user experience by making the game more fun and accessible, but they also introduce technical challenges that must be managed carefully.
 
 #### 2. Evaluate the system in terms of how well it meets the requirements and specifications.
-My system now meets all the requirements and specifications I have defined at the start of my project. Although I was not successful in running my program with a GUI, it has all the modes required to make it a fully working and enjoyable game. 
+I believe my system meets all the main requirements and goals I set at the beginning of the project. It includes all the game modes I planned, and after testing it, everything works the way it should. The questions adjust by level, the scoring system functions correctly, and it’s enjoyable to play. I wasn’t able to get the graphical user interface working in the end, which was one of my original ideas, but that doesn’t take away from the game itself. Even without the visuals, the game is still fun and runs properly. Overall, I think it does what it was supposed to do, even if there’s still room to improve. 
 
 #### 3. Evaluate your processes in terms of project management.
-I believe that I was not good at managing my project as I did have to do more work as the hand in date came nearer. Although I finished my program, I believe that I could have made more imporvements on my code. However, I am satisfied with the end results. 
+Although I finished my program, I believe that I was not good at managing my project as I did have to do more work as the hand in date came nearer. I believe that I could have made more imporvements on my code including the additional feature of running my program with a graphical user interface. However, I am satisfied with the end results as I met all the requirements I set before the start of my project and I have not missed out on any components in the completion of this assessment task. 
 
 #### 4. Gather feedback from at least two peers on meeting of functional and non-functional specifications. Evaluate your project in relation to peer feedback.
 Peer 1 (Miles):
@@ -279,15 +279,15 @@ Peer 1 (Miles):
 
     - A nagative I have is the variety of questions is limited, and the difficulty scaling could be improved further. This also ties into how some of the questions it asks are unreasonably difficult, regardless of ability. 
 
-    - Overall its a good program, and a good foundation to be built upon, that could make it an excelent study tool.
+    - Overall its a good program, and a good foundation to be built upon, that could make it an excellent study tool.
 
-Peer 2(Will):
+Peer 2(William):
 
-    - The game content is extremely thourough and I can see the usability of the game for educational purposes for all ages.
+    - The game content is extremely thorough and I can see the usability of the game for educational purposes for all ages.
 
-    - The game could improve in variety of questions and the dificulty scaling could be improved.
+    - The game could improve in variety of questions and the difficulty scaling could be improved.
 
-I believe that the fundamentals of my project was crafted well however, I was not able to reach into the smaller details and 
+I believe that the fundamentals of my project was crafted well however, I was not able to reach into the smaller details, especially for dividing up the year levels and creating more personalised questions. This was because I originally thought that having a simpler code would be more efficient, yet my code is lacks a variety of questions and the difficulty adjustments for separate year levels were not managed thoroughly. My main goal of creating a program that is used for educational purposes was successful however, I could not resolve the problem where the program will generate questions which are unreasonably difficult or easy as I did not realise that there was a huge gap in the difficulty level of the questions generated. 
 
 #### 5. Justify your use of OOP class features
 type
